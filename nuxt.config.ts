@@ -11,12 +11,15 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
   app: {
-    baseURL: '/simove',
+    baseURL: '/',
     head: {
       title: 'Simove',
       htmlAttrs: {
         lang: 'id'
       }
     }
+  },
+  nitro: {
+    preset: 'static'
   }
 })

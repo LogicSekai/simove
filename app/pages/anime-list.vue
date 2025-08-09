@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const config = useAppConfig()
+const router = useRouter()
 
 const animeList = ref({
     isLoading: true,
@@ -45,9 +46,10 @@ onMounted(() => {
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2">
-                    <div v-for="item in items.list" :key="item" class="bg-card text-card-foreground flex flex-col border shadow-sm p-1 gap-2 rounded-md hover:bg-primary hover:text-primary-foreground group">
+                    <div v-for="item in items.list" :key="item" class="bg-card text-card-foreground flex flex-col border shadow-sm p-1 gap-2 rounded-md hover:bg-primary hover:text-primary-foreground group"
+                    @click="router.push(item.link)">
                         <div class="p-0 px-2 flex items-center justify-between">
-                            <NuxtLink class="text-sm undefined hover:text-primary-foreground flex flex-col" :to="item.link">
+                            <NuxtLink class="text-sm undefined hover:text-primary-foreground flex flex-col w-full" :to="item.link">
                                 <p>{{ item.title }} <span v-if="item.ongoing" class="text-[10px] text-green-600">On-going</span></p>
                             </NuxtLink>
                         </div>
